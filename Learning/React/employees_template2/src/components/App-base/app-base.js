@@ -3,7 +3,7 @@ const AppBase = [
         id: 1,
         name: 'Makhmudkhon',
         salary: 5000,
-        increase: false
+        increase: true
     },
     {
         id: 2,
