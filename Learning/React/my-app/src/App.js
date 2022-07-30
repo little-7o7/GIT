@@ -1,22 +1,24 @@
-import "./App.css";
+import styled from 'styled-components';
 
+import './App.css';
 
-function WhoAmI(props) {
-    return (
-        <div>
-            <h1>My name is {props.name}, surname - {props.surname}</h1>
-            <a href={props.link}>My profile</a>
-        </div>
-    );
-};
+const Wrapper = styled.div`
+    width: 600px;
+    height: 600px;
+    margin: 80px auto 0 auto;
+    background-color: blue;
+    font-size: 50px;
 
+`;
 
 function App() {
     return (
         <div className="App">
-            <WhoAmI name="Makhmudkhon" surname="Munisknonow" link="https://www.youtube.com/"/>
+            <Wrapper>
+                little_7o7
+            </Wrapper>
         </div>
     );
-};
+}
 
 export default App;
