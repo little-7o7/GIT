@@ -1,23 +1,34 @@
 import './app-fitler.css'
 
-const AppFilter = () => {
+const AppFilter = (props) => {
+    const buttonsData = [
+        { name: 'all', label: 'Все сотрудники' },
+        { name: 'like', label: 'На повышению' },
+        { name: 'moreThen1000', label: 'З/П большее 1000$' }
+    ];
+
+    const buttons = buttonsData.map(({ name, label }) => {
+        let styles = '';
+        if (props.filter === name) {
+            styles = 'btn btn-light'
+        } else {
+            styles = 'btn btn-outline-light'
+        }
+
+        return (
+            <button
+                className={styles}
+                type="button"
+                key={name}
+                onClick={() => props.onFilterSelect(name)}>
+                {label}
+            </button>
+        )
+    })
+
     return (
         <div className="btn-group">
-            <button 
-                className="btn btn-light"
-                type="button">
-                    Все сотрудники
-            </button>
-            <button 
-                className="btn btn-outline-light"
-                type="button">
-                    На повышению
-            </button>
-            <button 
-                className="btn btn-outline-light"
-                type="button">
-                    З/П большее 1000$
-            </button>
+            {buttons}
         </div>
     )
 }
