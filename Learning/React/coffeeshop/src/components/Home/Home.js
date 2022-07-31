@@ -26,7 +26,7 @@ class Home extends Component {
                     <Content />
                 </Header>
                 <About />
-                <Ourbest/>
+                <Ourbest />
             </>
         );
     }

@@ -5,6 +5,8 @@ import styled from "styled-components";
 class Ourbestitem extends Component {
     render() {
         const Item = styled.div`
+            width: 176px;
+            height: 196px;
             display: flex;
             flex-direction: column;
             background: rgba(255, 255, 255, 0.65);
@@ -15,8 +17,7 @@ class Ourbestitem extends Component {
             font-style: normal;
 
             img {
-                width: 151px;
-                height: 130px;
+                width: 100%;
                 margin: 0 auto;
                 margin-bottom: 14px;
             }
@@ -27,7 +28,7 @@ class Ourbestitem extends Component {
                 line-height: 20px;
                 margin-bottom: 10px;
             }
-
+            
             span {
                 font-weight: 700;
                 font-size: 14px;
@@ -40,7 +41,7 @@ class Ourbestitem extends Component {
         return (
             <Link to={to}>
                 <Item>
-                    <img src={img} alt="Item" />
+                    <img src={require(`././../../resources/img/${img}`)} alt="fff" />
                     <h1>{title}</h1>
                     <span>{price}</span>
                 </Item>

@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Ourbestitem from "./OurBestItem";
@@ -40,9 +39,9 @@ class Ourbest extends Component {
             <Container>
                 <h1>Our best</h1>
                 <Itembox>
-                    <Ourbestitem to='' img='' title='' price=''/>
-                    <Ourbestitem to='' img='' title='' price=''/>
-                    <Ourbestitem to='' img='' title='' price=''/>
+                    <Ourbestitem to='/' img='hello.png' title='kerama xor' price='99$' />
+                    <Ourbestitem to='/' img='hello.png' title='kerama xor' price='99$' />
+                    <Ourbestitem to='/' img='hello.png' title='kerama xor' price='99$' />
                 </Itembox>
             </Container>
         )
