@@ -2,22 +2,32 @@ import { Component } from "react";
 import styled from "styled-components";
 
 import Navbar from "../Repeat/Navbar";
+import Content from "./Content";
+import About from "./AboutUs";
+import Ourbest from "./OurBest";
 
 import MainBgImg from './../../resources/img/MainBg.png'
 
-const MainBg = styled.div`
-    background-image: url(${MainBgImg});
-    width: 100%;
-    height: 959px;
-    background-repeat: no-repeat;
-`;
-
 class Home extends Component {
     render() {
-        return(
-            <MainBg>
-                <Navbar top={30} left={148} margin=''/>
-            </MainBg>
+
+        const Header = styled.div`
+            background-image: url(${MainBgImg});
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            height: 640px;
+        `;
+
+        return (
+            <>
+                <Header>
+                    <Navbar top={30} left={148} margin='' />
+                    <Content />
+                </Header>
+                <About />
+                <Ourbest/>
+            </>
         );
     }
 }

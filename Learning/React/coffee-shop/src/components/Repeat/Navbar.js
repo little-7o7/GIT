@@ -4,39 +4,36 @@ import styled from "styled-components";
 
 import CoffeeBeansImg from './../../resources/img/CoffeeBeans.svg'
 
-const SpansDiv = styled.div`
-        position: relative;
-        left: -10px;
-        display: flex;
-        gap: 40px;
-        font-family: 'Merienda';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 17px;
-        
-        a {
-            cursor: pointer;
-            text-decoration: none;
-            color: #FFFFFF;
-        }
-`;
-
 class Navbar extends Component {
-    constructor(props) {
-        super(props);
-        this.styles = {
-            display: "flex",
-            alignItems: "flex-end",
-            paddingTop: this.props.top + 'px',
-            paddingLeft: this.props.left + 'px',
-            margin: this.props.margin
-        }
-    }
-
     render() {
+        const Container = styled.div`
+            display: flex;
+            align-items: flex-end;
+            padding-top: ${this.props.top + 'px'};
+            padding-left: ${this.props.left + 'px'};
+            margin: ${this.props.margin};
+        `;
+
+        const SpansDiv = styled.div`
+            position: relative;
+            left: -10px;
+            display: flex;
+            gap: 40px;
+            font-family: 'Merienda';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 17px;
+            
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                color: #FFFFFF;
+            }
+        `;
+
         return (
-            <div style={this.styles}>
+            <Container>
                 <Link to='/'>
                     <img style={{ cursor: "pointer" }} src={CoffeeBeansImg} alt="" />
                 </Link>
@@ -45,7 +42,7 @@ class Navbar extends Component {
                     <Link to='/coffees'>Our coffee</Link>
                     <Link to='/for_your_pleasure'>For your pleasure</Link>
                 </SpansDiv>
-            </div>
+            </Container>
         )
     }
 }
