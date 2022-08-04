@@ -2,15 +2,15 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import CoffeeBeansImg from './../../resources/img/CoffeeBeans.svg'
+import CoffeeBeansImg from './../../resources/img/CoffeeBeansBlack.svg'
 
-class Navbar extends Component {
+class Navbarblack extends Component {
     render() {
         const Container = styled.div`
-            width: ${this.props.width + 'px'};
             display: flex;
             align-items: flex-end;
             padding-top: ${this.props.top + 'px'};
+            padding-left: ${this.props.left + 'px'};
             margin: ${this.props.margin};
         `;
 
@@ -28,7 +28,7 @@ class Navbar extends Component {
             a {
                 cursor: pointer;
                 text-decoration: none;
-                color: #FFFFFF;
+                color: #000000;
             }
         `;
 
@@ -47,4 +47,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default Navbarblack;

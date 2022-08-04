@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
-import Linebeans from './../Repeat/LineBeans'
+import CoffeeBeansImg from './../../resources/img/ContentCoffeeBeans.svg'
 
 class Content extends Component {
     render() {
@@ -53,10 +53,27 @@ class Content extends Component {
             margin-top: 18px;
         `;
 
+        const LineBeans = styled.div`
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin: 20px 0 40px;
+        `;
+
+        const Line = styled.div`
+            width: 60px;
+            height: 1px;
+            background-color: #ffffff;
+        `;
+
         return (
             <Container>
                 <h1>Everything You Love About Coffee</h1>
-                <Linebeans />
+                <LineBeans>
+                    <Line></Line>
+                    <img src={CoffeeBeansImg} alt="" />
+                    <Line></Line>
+                </LineBeans>
                 <h2>We makes every day full of energy and taste</h2>
                 <h2 className="aaa">Want to try our beans?</h2>
                 <Link to='/coffees'>

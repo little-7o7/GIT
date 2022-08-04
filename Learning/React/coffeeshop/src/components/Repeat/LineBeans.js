@@ -1,7 +1,7 @@
 import { Component } from "react";
 import styled from "styled-components";
 
-import CoffeeBeansImg from './../../resources/img/ContentCoffeeBeans.svg'
+import CoffeeBeansImg from './../../resources/img/ContentCoffeeBeansBlack.svg'
 
 class Linebeans extends Component {
     render() {
@@ -9,14 +9,13 @@ class Linebeans extends Component {
             display: flex;
             align-items: center;
             gap: 25px;
-            margin: 20px 0 35px;
+            margin: 20px 0 40px;
         `;
 
         const Line = styled.div`
             width: 60px;
             height: 1px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-            background-color: #FFFFFF;
+            background-color: #000000;
         `;
 
         return (

@@ -6,15 +6,17 @@ class Ourbestitem extends Component {
     render() {
         const Item = styled.div`
             width: 176px;
-            height: 196px;
+            height: 226px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             background: rgba(255, 255, 255, 0.65);
             border-radius: 8px;
             padding: 22px;
             text-align: end;
             font-family: 'Merienda';
             font-style: normal;
+            white-space: nowrap;
 
             img {
                 width: 100%;
@@ -34,16 +36,26 @@ class Ourbestitem extends Component {
                 font-size: 14px;
                 line-height: 20px;
             }
-            `;
+
+            div.div1 {
+                display: flex;
+                align-items: center;
+                flex: 1;
+            }
+        `;
 
         const { to, img, title, price } = this.props;
 
         return (
             <Link to={to}>
                 <Item>
-                    <img src={require(`././../../resources/img/${img}`)} alt="fff" />
-                    <h1>{title}</h1>
-                    <span>{price}</span>
+                    <div className="div1">
+                        <img src={require(`././../../resources/img/${img}`)} alt="fff" />
+                    </div>
+                    <div>
+                        <h1>{title}</h1>
+                        <span>{price}</span>
+                    </div>
                 </Item>
             </Link>
         )

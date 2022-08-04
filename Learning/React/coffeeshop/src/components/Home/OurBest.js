@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Ourbestitem from "./OurBestItem";
@@ -13,6 +14,7 @@ class Ourbest extends Component {
             flex-direction: column;
             align-items: center;
             background-image: url(${OurBestBg});
+            background-repeat: round;
             padding-top: 80px;
 
             h1 {
@@ -39,9 +41,9 @@ class Ourbest extends Component {
             <Container>
                 <h1>Our best</h1>
                 <Itembox>
-                    <Ourbestitem to='/' img='hello.png' title='kerama xor' price='99$' />
-                    <Ourbestitem to='/' img='hello.png' title='kerama xor' price='99$' />
-                    <Ourbestitem to='/' img='hello.png' title='kerama xor' price='99$' />
+                    <Ourbestitem to='/' img='Ourbestitem1.png' title='Solimo Coffee Beans 2 kg' price='10.73$$' />
+                    <Ourbestitem to='/' img='Ourbestitem2.png' title='Presto Coffee Beans 1 kg' price='15.99$$' />
+                    <Ourbestitem to='/' img='Ourbestitem3.png' title='AROMISTICO Coffee 1 kg' price='6.99$$' />
                 </Itembox>
             </Container>
         )
