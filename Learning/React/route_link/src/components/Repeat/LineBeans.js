@@ -1,7 +1,7 @@
 import { Component } from "react";
 import styled from "styled-components";
 
-import CoffeeBeansImg from './../../resources/img/ContentCoffeeBeansBlack.svg'
+import CoffeeBeansImg from '../../resources/img/ContentCoffeeBeansBlack.svg'
 
 class Linebeans extends Component {
     render() {

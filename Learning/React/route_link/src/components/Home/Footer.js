@@ -1,7 +1,7 @@
 import { Component } from "react";
 import styled from "styled-components";
 
-import Navbarblack from './../Repeat/NavbarBlack'
+import Navbarblack from '../Repeat/NavbarBlack'
 import Linebeans from "../Repeat/LineBeans";
 
 class Footer extends Component {

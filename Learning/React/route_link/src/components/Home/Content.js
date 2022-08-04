@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
-import CoffeeBeansImg from './../../resources/img/ContentCoffeeBeans.svg'
+import CoffeeBeansImg from '../../resources/img/ContentCoffeeBeans.svg'
 
 class Content extends Component {
     render() {

@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import CoffeeBeansImg from './../../resources/img/CoffeeBeansBlack.svg'
+import CoffeeBeansImg from '../../resources/img/CoffeeBeansBlack.svg'
 
 class Navbarblack extends Component {
     render() {

@@ -6,7 +6,7 @@ import Content from "./Content";
 import About from "./AboutUs";
 import Ourbest from "./OurBest";
 
-import MainBgImg from './../../resources/img/MainBg.png'
+import MainBgImg from '../../resources/img/MainBg.png'
 import Footer from "./Footer";
 
 class Home extends Component {

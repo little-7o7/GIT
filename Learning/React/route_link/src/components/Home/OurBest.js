@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import Ourbestitem from "./OurBestItem";
 
-import OurBestBg from './../../resources/img/OurBestBg.png'
+import OurBestBg from '../../resources/img/OurBestBg.png'
 
 class Ourbest extends Component {
     render() {
