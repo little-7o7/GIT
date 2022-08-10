@@ -75,7 +75,7 @@ const Loginform = (props) => {
                                     </div>
                                 </fieldset>
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <button className="_login_btn">LOGIN</button>
+                                    <button className="_login_btn">{btn}</button>
                                 </div>
                             </fieldset>
                         </form>
