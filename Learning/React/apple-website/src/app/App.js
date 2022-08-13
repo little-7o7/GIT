@@ -1,4 +1,5 @@
 import React from 'react';
+import Carousel from '../components/Carousel/Carousel';
 import Footer from '../components/Footer/Footer';
 
 import Navbar from '../components/Navbar/Navbar';
@@ -11,7 +12,7 @@ const App = () => {
         <div className='App'>
             <Navbar />
             <Unicef />
-
+            <Carousel />
             <Footer />
         </div>
     );
