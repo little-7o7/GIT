@@ -6,8 +6,9 @@ from pynput.keyboard import Key, Controller
 import random
 keyboard = Controller()
 
-# alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 driver = webdriver.Chrome(executable_path='./chromedriver')
+
 driver.get("https://monkeytype.com")
 time.sleep(5)
 #letters = []
@@ -30,11 +31,11 @@ for word in content:
         if count < len(word):
             scuff = random.randint(10, 100)
             if scuff == 50:
-                # keyboard.type(random.choice(alphabet))
-                keyboard.type(random.choice())
+                keyboard.type(random.choice(alphabet))
+                # keyboard.type(random.choice())
             else:
                 keyboard.type(str(i.text))
-                time.sleep(random.uniform(0.08, 0.22))
+                time.sleep(random.uniform(0.08, 0.1))
             count += 1
         if count == len(word):
             keyboard.press(Key.space)

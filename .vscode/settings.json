@@ -1,4 +1,31 @@
 {
     "beautify.config": "",
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+    "beautify.ignore": "",
+    "beautify.language": {
+
+        "js": {
+            "type": [
+                "javascript",
+                "json",
+                "jsonc",
+                "JSX"
+            ],
+            "filename": [
+                ".jshintrc",
+                ".jsbeautifyrc"
+            ]
+        },
+        "css": [
+            "css",
+            "less",
+            "scss"
+        ],
+        "html": [
+            "htm",
+            "html"
+        ]
+    },
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
 }
