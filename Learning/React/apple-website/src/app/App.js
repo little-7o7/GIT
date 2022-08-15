@@ -2,7 +2,7 @@ import React from 'react';
 
 import Navbar from '../components/Navbar/Navbar';
 import Unicef from '../components/Unicef/Unicef';
-import Container from '../components/Container/Container';
+import ContainersGrid from '../components/ContainersGrid/ContainersGrid'
 import Carousel from '../components/Carousel/Carousel';
 import Footer from '../components/Footer/Footer';
 
@@ -13,7 +13,7 @@ const App = () => {
         <div className='App'>
             <Navbar />
             <Unicef />
-            <Container />
+            <ContainersGrid log={123}/>
             <Carousel />
             <Footer />
         </div>

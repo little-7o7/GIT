@@ -1,0 +1,67 @@
+.Container {
+    height: 580px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h2 {
+        font-size: 56px;
+        line-height: 1.07143;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+
+        .italic {
+            font-style: italic;
+
+            .pink {
+                color: #ca2166;
+            }
+        }
+    }
+
+    h3 {
+        font-size: 28px;
+        line-height: 1.10722;
+        font-weight: 400;
+        letter-spacing: 0.004em;
+        margin-top: 6px;
+    }
+
+    .links {
+        display: flex;
+        gap: 45px;
+
+        a {
+            margin-top: 0.65em;
+            color: #06c;
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .imgPositionBottom {
+        padding-top: 47px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imgPositionRight {
+        padding-top: 240px;
+        padding-right: 490px;
+    }
+}

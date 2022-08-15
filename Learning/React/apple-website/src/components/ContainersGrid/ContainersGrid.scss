@@ -1,0 +1,37 @@
+.ContainersGrid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+
+    .containersGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 10px;
+    }
+
+    .miniContainersGrid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+    
+    @media only screen and (min-width: 2550px) {
+        .miniContainersGrid {
+            width: 3000px;
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(2, 50%);
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+        }
+    }
+}
