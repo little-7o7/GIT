@@ -35,7 +35,7 @@ for word in content:
                 # keyboard.type(random.choice())
             else:
                 keyboard.type(str(i.text))
-                time.sleep(random.uniform(0.08, 0.1))
+                time.sleep(random.uniform(0.08, 0.005))
             count += 1
         if count == len(word):
             keyboard.press(Key.space)
