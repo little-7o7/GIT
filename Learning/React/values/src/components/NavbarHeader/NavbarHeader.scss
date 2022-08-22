@@ -1,0 +1,46 @@
+.NavbarHeader {
+    .Left {
+        background: linear-gradient(
+            0.32deg,
+            rgba(28, 35, 64, 0) -5.79%,
+            #1c0f54 114.59%
+        );
+        filter: drop-shadow(0px -5px 25px rgba(0, 3, 32, 0.5));
+
+        .valuet_heading {
+            background: linear-gradient(
+                271.88deg,
+                #3887fe 4.26%,
+                #3ba0ff 51.37%,
+                #5fb2ff 99.01%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+
+            text-shadow: 0px 5px 12px rgba(6, 5, 19, 0.25);
+        }
+
+        .navButtons.active {
+            background-color: #32395e;
+
+            .text {
+                color: white !important;
+            }
+
+            .line {
+                opacity: 1;
+            }
+        }
+
+        .navButtons:hover {
+            transition: 0.3s ease-in-out;
+            background-color: #32395e;
+
+            .text {
+                color: white !important;
+            }
+        }
+    }
+}

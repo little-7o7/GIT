@@ -1,0 +1,56 @@
+.Login {
+    .login-form-div {
+        &::before {
+            position: absolute;
+            content: "";
+            background-image: linear-gradient(
+                0deg,
+                hsl(251deg 89% 14%) 0%,
+                hsl(251deg 73% 21%) 64%,
+                hsl(251deg 69% 26%) 100%
+            );
+            filter: drop-shadow(0px 25px 25px rgba(0, 3, 32, 0.5));
+            top: 0px;
+            right: 0px;
+            opacity: 0.9;
+            height: 100%;
+            width: 100%;
+            border-radius: 8px;
+            z-index: 1;
+        }
+    }
+
+    .valuet_heading {
+        background: linear-gradient(
+            271.88deg,
+            #3887fe 4.26%,
+            #3ba0ff 51.37%,
+            #5fb2ff 99.01%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+
+        text-shadow: 0px 5px 12px rgba(6, 5, 19, 0.25);
+    }
+
+    .leftIcon {
+        margin: 0 0 1px 1px;
+    }
+
+    .form_button_1 {
+        background: linear-gradient(88.43deg, #2f3453 11.5%, #242845 76.7%);
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .form_button_2 {
+        background: linear-gradient(
+            271.88deg,
+            #3887fe 4.26%,
+            #3ba0ff 51.37%,
+            #5fb2ff 99.01%
+        );
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}

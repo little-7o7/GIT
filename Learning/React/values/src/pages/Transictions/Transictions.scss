@@ -1,0 +1,56 @@
+.Transictions {
+    .viewStateBtn {
+        &.active {
+            background-color: #32395e;
+
+            span {
+                color: white;
+            }
+
+            .line {
+                opacity: 1;
+            }
+        }
+
+        &:hover {
+            background-color: #32395e;
+
+            span {
+                color: white;
+            }
+        }
+    }
+
+    .transicitions {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .transicition {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            &.waiting {
+                .status {
+                    background-color: #32395e;
+                }
+            }
+            &.completed {
+                .status {
+                    background-color: rgba(0, 232, 172, 0.75);
+                }
+            }
+            &.error {
+                .status {
+                    background-color: #f35050;
+                }
+
+                .arrow {
+                    color: #f35050 !important;
+                    filter: drop-shadow(0px 4px 5px rgba(243, 80, 80, 0.25));
+                }
+            }
+        }
+    }
+}
