@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible, AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { Box, Flex, Text, Heading, FormControl, InputGroup, InputLeftAddon, InputRightAddon, Input, Button, Link } from '@chakra-ui/react'
@@ -16,6 +15,7 @@ const Login = ({ status }) => {
         status.setNavStatus('exchange')
     }, [])
 
+    const [viewStatus, setViewStatus] = useState();
     const [passHide, setPassHide] = useState(true);
     const [FirstLineStatus, setFirstLineStatus] = useState(false);
     const [SecondLineStatus, setSecondLineStatus] = useState(false);
@@ -39,10 +39,86 @@ const Login = ({ status }) => {
         setSecondLineStatus(PassInp.current === document.activeElement)
     }
 
-    const navigate = useNavigate();
+    const changeViewStatus = (status) => {
+        console.log(status);
+        setViewStatus(status)
+    }
 
-    const someEventHandler = () => {
-        navigate('/overview');
+    const View = () => {
+        if (!viewStatus) {
+            return (
+                <>
+                    <InputGroup className='addon' onClick={lineStatus} borderBottom=''>
+                        <InputLeftAddon bg='#2E3558' onClick={() => focusInput(EmailInp)} border='none' h='58px'>
+                            <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
+                                <BsFillPersonFill size='22px' className='leftIcon' />
+                            </Flex>
+                        </InputLeftAddon>
+                        <Input className='input1' type='text' ref={EmailInp} focusBorderColor='none' fontSize='16px' placeholder='E-mail or Login' bg='#2E3558;' border='none' h='58px' p='5px' w='310px' />
+                    </InputGroup>
+                    <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='26px' opacity={FirstLineStatus === false ? '0' : '1'} />
+                    <InputGroup onClick={lineStatus}>
+                        <InputLeftAddon bg='#2E3558;' border='none' h='58px' onClick={() => focusInput(PassInp)}>
+                            <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
+                                <AiFillLock size='22px' className='leftIcon' />
+                            </Flex>
+                        </InputLeftAddon>
+                        <Input type={passHide === true ? 'password' : 'text'} ref={PassInp} focusBorderColor='none' fontSize='16px' placeholder='Password' bg='#2E3558;' border='none' h='58px' p='5px' w='250px' />
+                        <InputRightAddon fontSize='25px' textAlign='center' bg='#2E3558' border='none' h='58px' w='62px' onClick={() => setPassHide(!passHide)} userSelect='none' cursor='pointer'>
+                            {passIcon}
+                        </InputRightAddon>
+                    </InputGroup>
+                    <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='64px' opacity={SecondLineStatus === false ? '0' : '1'} />
+                </>
+            )
+        } else if (viewStatus) {
+            return (
+                <>
+                    <InputGroup className='addon' onClick={lineStatus} borderBottom=''>
+                        <InputLeftAddon bg='#2E3558' onClick={() => focusInput(EmailInp)} border='none' h='58px'>
+                            <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
+                                <BsFillPersonFill size='22px' className='leftIcon' />
+                            </Flex>
+                        </InputLeftAddon>
+                        <Input className='input1' type='text' ref={EmailInp} focusBorderColor='none' fontSize='16px' placeholder='E-mail or Login' bg='#2E3558;' border='none' h='58px' p='5px' w='310px' />
+                    </InputGroup>
+                    <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='26px' opacity={FirstLineStatus === false ? '0' : '1'} />
+                    <InputGroup onClick={lineStatus}>
+                        <InputLeftAddon bg='#2E3558;' border='none' h='58px' onClick={() => focusInput(PassInp)}>
+                            <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
+                                <AiFillLock size='22px' className='leftIcon' />
+                            </Flex>
+                        </InputLeftAddon>
+                        <Input type={passHide === true ? 'password' : 'text'} ref={PassInp} focusBorderColor='none' fontSize='16px' placeholder='Password' bg='#2E3558;' border='none' h='58px' p='5px' w='250px' />
+                        <InputRightAddon fontSize='25px' textAlign='center' bg='#2E3558' border='none' h='58px' w='62px' onClick={() => setPassHide(!passHide)} userSelect='none' cursor='pointer'>
+                            {passIcon}
+                        </InputRightAddon>
+                    </InputGroup>
+                    <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='64px' opacity={SecondLineStatus === false ? '0' : '1'} />
+                    <InputGroup className='addon' onClick={lineStatus} borderBottom=''>
+                        <InputLeftAddon bg='#2E3558' onClick={() => focusInput(EmailInp)} border='none' h='58px'>
+                            <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
+                                <BsFillPersonFill size='22px' className='leftIcon' />
+                            </Flex>
+                        </InputLeftAddon>
+                        <Input className='input1' type='text' ref={EmailInp} focusBorderColor='none' fontSize='16px' placeholder='E-mail or Login' bg='#2E3558;' border='none' h='58px' p='5px' w='310px' />
+                    </InputGroup>
+                    <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='26px' opacity={FirstLineStatus === false ? '0' : '1'} />
+                    <InputGroup onClick={lineStatus}>
+                        <InputLeftAddon bg='#2E3558;' border='none' h='58px' onClick={() => focusInput(PassInp)}>
+                            <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
+                                <AiFillLock size='22px' className='leftIcon' />
+                            </Flex>
+                        </InputLeftAddon>
+                        <Input type={passHide === true ? 'password' : 'text'} ref={PassInp} focusBorderColor='none' fontSize='16px' placeholder='Password' bg='#2E3558;' border='none' h='58px' p='5px' w='250px' />
+                        <InputRightAddon fontSize='25px' textAlign='center' bg='#2E3558' border='none' h='58px' w='62px' onClick={() => setPassHide(!passHide)} userSelect='none' cursor='pointer'>
+                            {passIcon}
+                        </InputRightAddon>
+                    </InputGroup>
+                    <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='64px' opacity={SecondLineStatus === false ? '0' : '1'} />
+                </>
+            )
+        }
     }
 
     return (
@@ -53,31 +129,11 @@ const Login = ({ status }) => {
                 <Flex zIndex='2' align='center' direction='column' p='82px 0px 0px 0px'>
                     <Text fontSize='36px' fontWeight='500' lineHeight='42px' textShadow='0px 4px 20px rgba(1, 143, 255, 0.15)' mb='52px'>Welcome!</Text>
                     <FormControl>
-                        <InputGroup className='addon' onClick={lineStatus} borderBottom=''>
-                            <InputLeftAddon bg='#2E3558' onClick={() => focusInput(EmailInp)} border='none' h='58px'>
-                                <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
-                                    <BsFillPersonFill size='22px' className='leftIcon' />
-                                </Flex>
-                            </InputLeftAddon>
-                            <Input className='input1' type='text' ref={EmailInp} focusBorderColor='none' fontSize='16px' placeholder='E-mail or Login' bg='#2E3558;' border='none' h='58px' p='5px' w='310px' />
-                        </InputGroup>
-                        <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='26px' opacity={FirstLineStatus === false ? '0' : '1'} />
-                        <InputGroup onClick={lineStatus}>
-                            <InputLeftAddon bg='#2E3558;' border='none' h='58px' onClick={() => focusInput(PassInp)}>
-                                <Flex align='center' justify='center' h='35px' w='35px' border='2px solid #5FB2FF' borderRadius='100%'>
-                                    <AiFillLock size='22px' className='leftIcon' />
-                                </Flex>
-                            </InputLeftAddon>
-                            <Input type={passHide === true ? 'password' : 'text'} ref={PassInp} focusBorderColor='none' fontSize='16px' placeholder='Password' bg='#2E3558;' border='none' h='58px' p='5px' w='250px' />
-                            <InputRightAddon fontSize='25px' textAlign='center' bg='#2E3558' border='none' h='58px' w='62px' onClick={() => setPassHide(!passHide)} userSelect='none' cursor='pointer'>
-                                {passIcon}
-                            </InputRightAddon>
-                        </InputGroup>
-                        <Box h='2px' w='372px' borderRadius='10px' transition='.3s ease-in-out' bg='#1288E8' m='0 auto' mb='64px' opacity={SecondLineStatus === false ? '0' : '1'} />
+                        <View />
                     </FormControl>
                     <Flex align='center' gap='32px'>
-                        <Button className='form_button_1' onClick={someEventHandler} _hover='' color='#949EC0' borderRadius='8px'>SING UP</Button>
-                        <Button className='form_button_2' _hover='' borderRadius='8px'>SING IN</Button>
+                        <Button className='form_button_1' onClick={() => changeViewStatus(false)} _hover='' color='#949EC0' borderRadius='8px'>SING UP</Button>
+                        <Button className='form_button_2' onClick={() => changeViewStatus(true)} _hover='' borderRadius='8px'>SING IN</Button>
                     </Flex>
                     <Link href='/' fontSize='14px' color='#5FB2FF' mt='104px'>Forgot your password?</Link>
                 </Flex>

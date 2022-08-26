@@ -12,17 +12,17 @@ const Exchange = ({ status }) => {
     const [amount2, setAmount2] = useState(1);
     const [rates, setRates] = useState({USD: 100, BTC: 21400});
 
-    // const API_KEY = "nwqzwfcaIXqRBhwuSaq5rFwVVPdeCzMY";
+    const API_KEY = "nwqzwfcaIXqRBhwuSaq5rFwVVPdeCzMY";
 
-    // useEffect(() => {
-    //     axios
-    //         .get(`https://api.apilayer.com/fixer/latest?base=USD&apikey=${API_KEY}`)
-    //         .then((res) => {
-    //             if (res.status === 200 || res.status === 201) {
-    //                 setRates(res.data.rates);
-    //             }
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios
+            .get(`https://api.apilayer.com/fixer/latest?base=USD&apikey=${API_KEY}`)
+            .then((res) => {
+                if (res.status === 200 || res.status === 201) {
+                    setRates(res.data.rates);
+                }
+            });
+    }, []);
 
     function exchange() {
         setAmount2(amount1 * rates[currency2] / rates[currency1]);
