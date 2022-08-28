@@ -4,7 +4,7 @@ import { storage } from './firebaseConfig';
 import { ref, getDownloadURL, uploadBytesResumable, deleteObject } from "firebase/storage";
 
 function App() {
-    const [imgUrl, setImgUrl] = useState(null);
+    const [imgUrl, setImgUrl] = useState();
     const [progresspercent, setProgresspercent] = useState(0);
 
     const handleSubmit = (e) => {
