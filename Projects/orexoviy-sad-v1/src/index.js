@@ -9,9 +9,11 @@ import Chakra from './chakra';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
-        <Chakra />
-    </BrowserRouter>
+    <React.StrictMode>
+        <BrowserRouter>
+            <Chakra />
+        </BrowserRouter>
+    </React.StrictMode>
 );
 
 reportWebVitals();

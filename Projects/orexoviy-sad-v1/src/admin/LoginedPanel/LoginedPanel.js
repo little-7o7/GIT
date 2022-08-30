@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useUserAuth } from "../../UserAuthContext";
+import LoginedPanelNavbar from '../LoginedPanelNavbar/LoginedPanelNavbar';
 
 import './LoginedPanel.scss';
 
 const LoginedPanel = () => {
-    return (
-        <div className='LoginedPanel'>
+    const { user, logOut } = useUserAuth();
+    const { email } = user;
+    console.log(email);
 
-        </div>
+    return (
+        <LoginedPanelNavbar user={email} />
     );
 }
 
