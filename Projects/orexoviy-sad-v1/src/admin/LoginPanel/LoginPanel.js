@@ -8,7 +8,7 @@ import { RiShieldKeyholeFill } from "react-icons/ri";
 
 import './LoginPanel.scss';
 
-import Logo from './logo.jpg'
+import Logo from './../logo.jpg'
 
 const LoginPanel = (props) => {
     const [email, setEmail] = useState("munisxonovmaxmudxon@gmail.com");

@@ -8,18 +8,11 @@ import LoginPanel from './LoginPanel/LoginPanel';
 
 
 const Admin = () => {
-    const { logOut } = useUserAuth();
-
-    // onbeforeunload = function () {
-    //     logOut()
-    //     return "";
-    // }
-
     return (
         <div className='Admin'>
             <Routes>
                 <Route path="/login" element={<LoginPanel />} />
-                <Route path="/logined" element={<LoginedPanel />} />
+                <Route path="/logined/*" element={<LoginedPanel />} />
             </Routes>
         </div >
     );

@@ -17,8 +17,8 @@ const Home = () => {
   return (
     <>
       <div className="p-4 box mt-3 text-center">
-        Hello little_7o7 <br />
-        {user && user.email}
+        Hello Welcome <br />
+        {user && user.email && user.phoneNumber}
       </div>
       <div className="d-grid gap-2">
         <Button variant="primary" onClick={handleLogout}>
