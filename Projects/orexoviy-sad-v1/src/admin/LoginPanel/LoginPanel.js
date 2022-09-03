@@ -13,8 +13,9 @@ import Logo from './../logo.jpg'
 const LoginPanel = (props) => {
     const [email, setEmail] = useState("munisxonovmaxmudxon@gmail.com");
     const [password, setPassword] = useState("little_7o7");
-    const { logIn } = useUserAuth();
     const [error, setError] = useState(false);
+    const { logIn, logOut } = useUserAuth();
+    logOut();
 
     const navigate = useNavigate();
 

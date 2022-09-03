@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "orexoviy-sad",
   storageBucket: "orexoviy-sad.appspot.com",
   messagingSenderId: "990091375673",
-  appId: "1:990091375673:web:2a6589b42c36a36425c9e8"
+  appId: "1:990091375673:web:90f90796d4edf72625c9e8"
 };
 
 // Initialize Firebase
