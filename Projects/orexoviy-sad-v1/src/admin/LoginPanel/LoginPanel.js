@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { useUserAuth } from "../../UserAuthContext";
+import { useUserAuth } from "./../UserAuthContext";
 
 import { Input, InputGroup, InputLeftAddon, InputRightAddon, Button } from '@chakra-ui/react'
 import { BsFillPersonFill } from "react-icons/bs";
@@ -48,6 +48,7 @@ const LoginPanel = (props) => {
 
     return (
         <div className='LoginPanel'>
+            {console.log('render')}
             <div className='login'>
                 <img src={Logo} alt="Logo" />
                 <form onSubmit={handleSubmit} className='loginForm'>

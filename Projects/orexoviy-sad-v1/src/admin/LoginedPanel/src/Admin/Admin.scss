@@ -1,2 +1,130 @@
 .Admin {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .top {
+        display: flex;
+        gap: 20px;
+
+        .avatar {
+            width: 230px;
+            height: 230px;
+            border-radius: 13px;
+            border: 3px solid transparent;
+            overflow: hidden;
+
+            &:hover {
+                border-color: rgba(44, 159, 61, 1) !important;
+                transition: 0.5s ease-in;
+            }
+        }
+
+        .about {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 13px 0;
+
+            span:hover {
+                color: rgba(44, 159, 61, 1) !important;
+                transition: 0.2s ease-in-out;
+            }
+
+            .name {
+                font-size: 29px;
+                font-weight: 600;
+            }
+
+            .username {
+                font-size: 25px;
+                font-weight: 500;
+                margin-top: 14px;
+            }
+
+            .profession {
+                font-size: 22px;
+                font-weight: 500;
+                letter-spacing: 1.5px;
+                margin-top: 17px;
+            }
+
+            .social_networks {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-top: 20px;
+
+                .link {
+                    &:hover {
+                        svg {
+                            color: rgba(44, 159, 61, 1) !important;
+                            transition: 0.2s ease-in-out;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(44, 159, 61, 1);
+        border-radius: 2px;
+        margin: 10px 0;
+    }
+
+    .bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+
+        .userLine {
+            display: grid;
+            grid-template-columns: 300px 400px;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+
+            div {
+                display: flex;
+                align-items: center;
+
+                &.about_us {
+                    align-items: flex-start;
+                }
+            }
+
+            div:nth-child(1) {
+                font-size: 19px;
+                font-weight: 600;
+            }
+
+            div:nth-child(2) {
+                font-size: 17px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1600px) and (max-width: 1920px) {
+        .bottom {
+            gap: 8px;
+
+            .userLine {
+                grid-template-columns: 400px 450px;
+
+                div:nth-child(1) {
+                    font-size: 21px;
+                    font-weight: 600;
+                }
+                div:nth-child(2) {
+                    font-size: 19px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
 }
