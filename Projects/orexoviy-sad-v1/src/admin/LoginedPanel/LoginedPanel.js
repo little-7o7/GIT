@@ -1,5 +1,5 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
-import { useNavigate, Route, Routes, } from 'react-router-dom';
+import { useNavigate, Route, Routes, Navigate } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
 
 import { db } from './../firebase';
@@ -29,7 +29,7 @@ const LoginedPanel = (props) => {
     const [admin, setAdmin] = useState({});
     const [loading, setLoading] = useState(true);
     const [loadingData, setLoadingData] = useState(true);
-    const [navStatus, setNavStatus] = useState(arr[arr.length - 1]);
+    const [navStatus, setNavStatus] = useState('logined');
 
     const duration = 200;
 
@@ -141,8 +141,9 @@ const LoginedPanel = (props) => {
                                 {loadingData ? <div className='spinnerDiv'><SyncLoader color='rgba(44, 159, 61, 1)' loading={loadingData} cssOverride={spinner} size={15} /></div>
                                     :
                                     <Routes>
-                                        <Route path="/" element={<Admin adminData={admin} />} />
-                                        <Route path="/orders" element={'orders'} />
+                                        <Route path="" exact element={<Admin adminData={admin} />} />
+                                        <Route path="/orders" exact element={'orders'} />
+                                        <Route path="*" element={<Navigate to="" replace />} />
                                     </Routes>
                                 }
                             </div>

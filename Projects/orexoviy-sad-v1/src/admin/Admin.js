@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 import { UserAuthContextProvider } from "./UserAuthContext";
 
 import './Admin.scss';
-import LoginedPanel from './LoginedPanel/LoginedPanel';
-import LoginPanel from './LoginPanel/LoginPanel';
 
+const LoginedPanel = lazy(() => import('./LoginedPanel/LoginedPanel'));
+const LoginPanel = lazy(() => import('./LoginPanel/LoginPanel'));
 
 const Admin = () => {
 
@@ -13,9 +13,10 @@ const Admin = () => {
         <div className='Admin'>
             <UserAuthContextProvider>
                 <Routes>
-                    <Route path="/" element={<Navigate to="login" replace />} />
-                    <Route path="/login" element={<LoginPanel />} />
-                    <Route path="/logined/*" element={<LoginedPanel />} />
+                    <Route path="" exact element={<Navigate to="login" replace />} />
+                    <Route path="login" exact element={<LoginPanel />} />
+                    <Route path="logined/*" exact element={<LoginedPanel />} />
+                    <Route path="*" element={<Navigate to="login" replace />} />
                 </Routes>
             </UserAuthContextProvider>
         </div >

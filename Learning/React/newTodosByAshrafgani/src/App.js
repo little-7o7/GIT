@@ -5,6 +5,7 @@ import { randomColor } from "randomcolor";
 import Draggable from "react-draggable";
 
 function App() {
+  const [{ innerWidth, innerHeight }, setWindowSize] = useState(getWindowSize());
   const [item, setItem] = useState("");
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("items")) || []
@@ -20,6 +21,11 @@ function App() {
     return Math.round(rand);
   }
 
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
+
   const newItem = () => {
     if (item.trim() !== "") {
       const newItem = {
@@ -29,8 +35,8 @@ function App() {
           luminosity: "light",
         }),
         defaultPos: {
-          x: randomInteger(-928, 1672),
-          y: randomInteger(-926, -56),
+          x: randomInteger(5, innerWidth - 100),
+          y: randomInteger(-innerHeight + 5, 40),
         },
       };
       setItems((items) => [...items, newItem]);

@@ -48,7 +48,6 @@ const LoginPanel = (props) => {
 
     return (
         <div className='LoginPanel'>
-            {console.log('render')}
             <div className='login'>
                 <img src={Logo} alt="Logo" />
                 <form onSubmit={handleSubmit} className='loginForm'>

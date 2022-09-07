@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import { db } from "./firebase";
-import { doc, collection, addDoc, getDocs, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, set, collection, addDoc, getDocs, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 
 function App() {
     const [customerName, setCustomerName] = useState("");
@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
         (async function () {
             // ! get items
-            const querySnapshot = await getDocs(collection(db, "customersData"));
+            const querySnapshot = await getDocs(collection(db, "catalogs"));
             setCustomersData(
                 querySnapshot.docs.map((doc) => ({
                     id: doc.id,
@@ -25,13 +25,12 @@ function App() {
                 }))
             );
 
-
             // ! get item
-            const docRef = doc(db, "customersData", "k9xlAKSyiu8ZuowiPJll");
+            const docRef = doc(db, "catalogs", "asal", 'asal', '500');
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                // console.log("Document data:", docSnap.data());
+                console.log("Document data:", docSnap.data());
                 setCustomerData(
                     {
                         id: docSnap.id,
@@ -44,13 +43,18 @@ function App() {
         }());
     }, [])
 
+    useEffect(() => {
+        console.log("Document data:", customerData);
+    }, [customerData])
+
     const PostData = async (e) => {
         e.preventDefault();
         try {
-            const docRef = await addDoc(collection(db, "customersData"), {
+            const data = {
                 name: customerName,
-                password: customerPassword,
-            });
+                password: customerPassword
+            }
+            const docRef = await addDoc(collection(db, "customersData", 'admins', 'sadfakjsdf').doc('new-city-id').set(data));
             console.log("Document written with ID: ", docRef.id);
 
             setCustomerName("");
