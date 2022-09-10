@@ -1,6 +1,7 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
 import { useNavigate, Route, Routes, Navigate } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
+import { Helmet } from "react-helmet";
 
 import { db } from './../firebase';
 import { doc, getDoc } from "firebase/firestore";
@@ -13,12 +14,12 @@ import SyncLoader from "react-spinners/SyncLoader";
 import { HiOutlineLogout } from 'react-icons/hi';
 import { RiAdminLine } from 'react-icons/ri';
 import { IoReorderThree } from 'react-icons/io5';
-import { Button } from '@chakra-ui/react';
 
 import Admin from './src/Admin/Admin';
+import Orders from './src/Orders/Orders';
 
 const LoginedPanel = (props) => {
-    let arr = window.location.pathname.split('/')
+    const arr = window.location.href.split("/")
     const { user } = useUserAuth();
     const navigator = useNavigate();
 
@@ -29,7 +30,7 @@ const LoginedPanel = (props) => {
     const [admin, setAdmin] = useState({});
     const [loading, setLoading] = useState(true);
     const [loadingData, setLoadingData] = useState(true);
-    const [navStatus, setNavStatus] = useState('logined');
+    const [navStatus, setNavStatus] = useState(`${arr[arr.length - 1]}`);
 
     const duration = 200;
 
@@ -97,6 +98,9 @@ const LoginedPanel = (props) => {
 
     return (
         <div className='LoginedPanel'>
+            <Helmet>
+                <title>Logined</title>
+            </Helmet>
             <div className="left">
                 <div className="content">
                     <div className="top">
@@ -142,7 +146,7 @@ const LoginedPanel = (props) => {
                                     :
                                     <Routes>
                                         <Route path="" exact element={<Admin adminData={admin} />} />
-                                        <Route path="/orders" exact element={'orders'} />
+                                        <Route path="/orders" exact element={<Orders />} />
                                         <Route path="*" element={<Navigate to="" replace />} />
                                     </Routes>
                                 }

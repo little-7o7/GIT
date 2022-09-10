@@ -9,11 +9,13 @@ body {
 
 html {
     background-color: rgba(44, 159, 61, 1);
+    transition: .3s ease-out;
 }
 
 body {
     background-color: rgba(44, 159, 61, 1);
     overflow: hidden;
+    transition: .3s ease-out;
 }
 
 code {

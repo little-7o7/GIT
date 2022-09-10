@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 
 import './Admin.scss';
 import { BsTelegram, BsInstagram, BsLinkedin, BsGlobe2, BsFacebook, BsGithub, BsWhatsapp } from 'react-icons/bs';
@@ -8,6 +9,9 @@ const Admin = (props) => {
 
     return (
         <div className='Admin'>
+            <Helmet>
+                <title>Admin</title>
+            </Helmet>
             <div className="top">
                 <div className="avatar">
                     <img src={avatar} alt="" />
@@ -77,4 +81,3 @@ const Admin = (props) => {
 }
 
 export default Admin;
-    
