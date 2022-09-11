@@ -45,7 +45,7 @@ let main = document.querySelector('main')
 
 openModal(header_btn, modal_screen)
 closeModal(back_g, modal_screen)
-closeModal(modal_btn, modal_screen)
+closeModal(modal_btn, modal_screen) 
 
 
 modal_form.onsubmit = (event) => {

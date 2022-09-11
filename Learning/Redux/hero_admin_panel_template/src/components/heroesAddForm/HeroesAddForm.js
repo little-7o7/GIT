@@ -1,52 +1,89 @@
+import { useEffect } from 'react';
+import { useHttp } from '../../hooks/http.hook';
+import { useSelector, useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid'
 
+import { filtersFetching, filtersFetched, filtersFetchingError, heroPosting, heroPosted } from '../../actions';
 
-// Задача для этого компонента:
+// TODO Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
 // в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
+// TODO Уникальный идентификатор персонажа можно сгенерировать через uiid
 // Усложненная задача:
 // Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
+// TODO Дополнительно:
+// TODO Элементы <option></option> желательно сформировать на базе
+// TODO данных из фильтров
 
 const HeroesAddForm = () => {
+    const { filters } = useSelector(state => state);
+    const dispatch = useDispatch();
+    const { request } = useHttp();
+
+    useEffect(() => {
+        dispatch(filtersFetching());
+        request("http://localhost:3001/filters", { method: 'GET' })
+            .then(data => dispatch(filtersFetched(data)))
+            .catch(() => dispatch(filtersFetchingError()))
+
+        // eslint-disable-next-line
+    }, []);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        let newHero = {
+            id: uuidv4(),
+        };
+
+        if (event.target[0].value > 0 || event.target[1].value > 0 || event.target[2].value !== 'all') {
+            let fm = new FormData(event.target)
+            fm.forEach((value, key) => {
+                newHero[key] = value;
+            })
+
+            console.log(newHero);
+        }
+    }
+
     return (
-        <form className="border p-4 shadow-lg rounded">
+        <form onSubmit={handleSubmit} className="border p-4 shadow-lg rounded">
             <div className="mb-3">
                 <label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
-                <input 
+                <input
                     required
-                    type="text" 
-                    name="name" 
-                    className="form-control" 
-                    id="name" 
-                    placeholder="Как меня зовут?"/>
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    id="name"
+                    placeholder="Как меня зовут?" />
             </div>
 
             <div className="mb-3">
                 <label htmlFor="text" className="form-label fs-4">Описание</label>
                 <textarea
                     required
-                    name="text" 
-                    className="form-control" 
-                    id="text" 
+                    name="description"
+                    className="form-control"
+                    id="description"
                     placeholder="Что я умею?"
-                    style={{"height": '130px'}}/>
+                    style={{ "height": '130px' }} />
             </div>
 
             <div className="mb-3">
                 <label htmlFor="element" className="form-label">Выбрать элемент героя</label>
-                <select 
+                <select
                     required
-                    className="form-select" 
-                    id="element" 
-                    name="element">
-                    <option >Я владею элементом...</option>
-                    <option value="fire">Огонь</option>
-                    <option value="water">Вода</option>
-                    <option value="wind">Ветер</option>
-                    <option value="earth">Земля</option>
+                    className="form-select"
+                    id="element"
+                    name="element"
+                    defaultValue='all'>
+                    <option value='all' disabled>Я владею элементом...</option>
+                    {filters.map((item, idx) => {
+                        if (item.value !== 'all') {
+                            return <option key={idx} value={item.value}>{item.inRus}</option>;
+                        } else return '';
+                    })}
                 </select>
             </div>
 
