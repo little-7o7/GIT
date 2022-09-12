@@ -18,7 +18,7 @@ import { filtersFetching, filtersFetched, filtersFetchingError, heroPosting, her
 const HeroesAddForm = () => {
     const { filters } = useSelector(state => state);
     const dispatch = useDispatch();
-    const { request } = useHttp();
+    const { request, postRequest } = useHttp();
 
     useEffect(() => {
         dispatch(filtersFetching());
@@ -42,7 +42,9 @@ const HeroesAddForm = () => {
                 newHero[key] = value;
             })
 
-            console.log(newHero);
+            dispatch(heroPosting());
+            postRequest('http://localhost:3001/heroes/', newHero)
+                .then(data => dispatch(heroPosted(newHero)))
         }
     }
 

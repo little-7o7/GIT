@@ -25,12 +25,25 @@ export const useHttp = () => {
         }
     }, []);
 
+    const postRequest = async (url, body) => {
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(body)
+        });
+
+        let result = await response.json();
+    }
+
     // const clearError = useCallback(() => {
     // setProcess('loading');
     // }, []);
 
     return {
         request,
+        postRequest,
         // clearError, 
         // process, 
         // setProcess
