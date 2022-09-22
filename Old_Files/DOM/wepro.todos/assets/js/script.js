@@ -75,31 +75,31 @@ getItems(API)
 //     }
 // }
 
-// function formSubmit(form) {
-//     console.log(form);
-//     form.onsubmit = () => {
-//         event.preventDefault()
+function formSubmit(form) {
+    console.log(form);
+    form.onsubmit = () => {
+        event.preventDefault()
 
-//         let obj = {
-//             author: "little_7o7"
-//         }
+        let obj = {
+            author: "little_7o7"
+        }
 
-//         let fm = new FormData(form)
+        let fm = new FormData(form)
 
-//         fm.forEach((value, key) => {
-//             obj[key] = value
-//         })
+        fm.forEach((value, key) => {
+            obj[key] = value
+        })
 
-//         axios.post(API, obj)
-//             .then(res => {
-//                 if (res.status == 200 || res.status == 201) {
-//                     console.log("todo created");
-//                 }
-//             })
+        axios.post(API, obj)
+            .then(res => {
+                if (res.status == 200 || res.status == 201) {
+                    console.log("todo created");
+                }
+            })
 
-//         modals.style.top = "-100%"
-//     }
-// }
+        modals.style.top = "-100%"
+    }
+}
 
 
 function clearAPI(api) {

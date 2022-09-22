@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { useUserAuth } from "./../UserAuthContext";
+
+import { Helmet } from "react-helmet";
+import favicon from '../../assets/img/favicon.png'
 
 import { Input, InputGroup, InputLeftAddon, InputRightAddon, Button } from '@chakra-ui/react'
 import { BsFillPersonFill } from "react-icons/bs";
@@ -49,6 +51,7 @@ const LoginPanel = (props) => {
         <div className='LoginPanel'>
             <Helmet>
                 <title>Admin Login</title>
+                <link rel="icon" href={favicon} />
             </Helmet>
             <div className='login'>
                 <img src={Logo} alt="Logo" />

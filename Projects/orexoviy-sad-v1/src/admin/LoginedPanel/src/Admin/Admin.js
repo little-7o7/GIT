@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from "react-helmet";
 
 import './Admin.scss';
+import favicon from '../../../../assets/img/favicon.png'
+
 import { BsTelegram, BsInstagram, BsLinkedin, BsGlobe2, BsFacebook, BsGithub, BsWhatsapp } from 'react-icons/bs';
 
 const Admin = (props) => {
@@ -11,6 +13,7 @@ const Admin = (props) => {
         <div className='Admin'>
             <Helmet>
                 <title>Admin</title>
+                <link rel="icon" href={favicon} />
             </Helmet>
             <div className="top">
                 <div className="avatar">

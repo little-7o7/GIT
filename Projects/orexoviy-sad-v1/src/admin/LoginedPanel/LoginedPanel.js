@@ -1,6 +1,7 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
 import { useNavigate, Route, Routes, Navigate } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
+
 import { Helmet } from "react-helmet";
 
 import { db } from './../firebase';
@@ -8,7 +9,9 @@ import { doc, getDoc } from "firebase/firestore";
 import { useUserAuth } from "./../UserAuthContext";
 
 import './LoginedPanel.scss';
-import Logo from './../logo.jpg';
+import favicon from '../../assets/img/favicon.png'
+import Logo from './../logo.jpg'
+
 import SyncLoader from "react-spinners/SyncLoader";
 
 import { HiOutlineLogout } from 'react-icons/hi';
@@ -100,6 +103,7 @@ const LoginedPanel = (props) => {
         <div className='LoginedPanel'>
             <Helmet>
                 <title>Logined</title>
+                <link rel="icon" href={favicon} />
             </Helmet>
             <div className="left">
                 <div className="content">
@@ -113,6 +117,22 @@ const LoginedPanel = (props) => {
                                     <IoReorderThree color='white' size='20px' />
                                 </div>
                                 <span className="text">Заказы</span>
+                            </div>
+                        </button>
+                        <button className={navStatus === 'addItem' ? 'activeNavButton' : ''} onClick={() => animation('addItem', 'addItem')}>
+                            <div className="button">
+                                <div className='radius'>
+                                    <IoReorderThree color='white' size='20px' />
+                                </div>
+                                <span className="text">addItem</span>
+                            </div>
+                        </button>
+                        <button className={navStatus === 'catalog' ? 'activeNavButton' : ''} onClick={() => animation('catalog', 'catalog')}>
+                            <div className="button">
+                                <div className='radius'>
+                                    <IoReorderThree color='white' size='20px' />
+                                </div>
+                                <span className="text">catalog</span>
                             </div>
                         </button>
                     </div>
@@ -147,6 +167,8 @@ const LoginedPanel = (props) => {
                                     <Routes>
                                         <Route path="" exact element={<Admin adminData={admin} />} />
                                         <Route path="/orders" exact element={<Orders />} />
+                                        <Route path="/addItem" exact element={'addItem'} />
+                                        <Route path="/catalog" exact element={'catalog'} />
                                         <Route path="*" element={<Navigate to="" replace />} />
                                     </Routes>
                                 }
