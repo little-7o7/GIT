@@ -6,13 +6,14 @@ import favicon from '../../../../assets/img/favicon.png'
 import './Orders.scss';
 
 const Orders = () => {
+
     return (
         <div className='Orders'>
             <Helmet>
                 <title>Orders</title>
                 <link rel="icon" href={favicon} />
             </Helmet>
-            Orders
+            OrdersjgZ
         </div>
     );
 }
