@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from './slices/counterSlice';
+import navigationPanelReducer from './slices/navigationPanelSlice';
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer,
+        navigationPanel: navigationPanelReducer,
     },
 });
 
