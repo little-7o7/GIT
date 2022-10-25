@@ -1,9 +1,13 @@
 import styles from './ChatsResizerLayout.module.scss'
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { CgSearch } from 'react-icons/cg';
 import { BsPersonSquare, BsPersonCircle } from 'react-icons/bs';
 import { TbMessages } from 'react-icons/tb';
 import { useRouter } from 'next/router';
+import { InputGroup, InputLeftElement, Input, IconButton } from '@chakra-ui/react';
+import { contacts, chats } from '../../../app/slices/navigationPanelSlice'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import Link from 'next/link';
 
 interface IChatsResizerLayout {
     children: any;
@@ -11,6 +15,9 @@ interface IChatsResizerLayout {
 }
 
 const ChatsResizerLayout = (props: IChatsResizerLayout) => {
+    const navigationPanelStatus = useAppSelector((state) => state.navigationPanel.value)
+    const dispatch = useAppDispatch()
+
     const router = useRouter();
     const ref = useRef(null)
     const refResizer = useRef(null)
@@ -49,13 +56,29 @@ const ChatsResizerLayout = (props: IChatsResizerLayout) => {
         }
     }, [])
 
+    const dispatchChat = () => {
+        if (navigationPanelStatus !== 'chats') {
+            dispatch(chats())
+        }
+    }
+
+    const dispatchContacts = () => {
+        if (navigationPanelStatus !== 'contacts') {
+            dispatch(contacts())
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.box}>
                 <div ref={ref} className={styles.resizeable}>
                     <div className={styles.searchPanel}>
-                        <CgSearch size={'20px'} color='' />
-                        <input type="" placeholder='Search' />
+                        <InputGroup>
+                            <InputLeftElement pointerEvents='none'>
+                                <CgSearch size={'20px'} color='' />
+                            </InputLeftElement>
+                            <Input type='tel' placeholder='Search' />
+                        </InputGroup>
                     </div>
                     <div className={styles.scroll}>
                         <div className={styles.chats}>
@@ -63,15 +86,28 @@ const ChatsResizerLayout = (props: IChatsResizerLayout) => {
                         </div>
                     </div>
                     <div className={styles.navigationPanel}>
-                        <div className={styles.navigationButton}>
-                            <BsPersonSquare size={'30px'} />
-                        </div>
-                        <div className={styles.navigationButton}>
-                            <TbMessages size={'30px'} />
-                        </div>
-                        <div className={styles.navigationButton}>
-                            <BsPersonCircle size={'30px'} />
-                        </div>
+                        <IconButton
+                            border={'none'}
+                            variant='outline'
+                            aria-label='contacts'
+                            onClick={dispatchContacts}
+                            icon={<BsPersonSquare size={'30px'} color={navigationPanelStatus === 'contacts' ? '#3369f3' : ''} />}
+                        />
+                        <IconButton
+                            border={'none'}
+                            variant='outline'
+                            aria-label='chats'
+                            onClick={dispatchChat}
+                            icon={<TbMessages size={'30px'} color={navigationPanelStatus === 'chats' ? '#3369f3' : ''} />}
+                        />
+                        <Link href={'/profile'}>
+                            <IconButton
+                                border={'none'}
+                                variant='outline'
+                                aria-label='profile'
+                                icon={<BsPersonCircle size={'30px'} />}
+                            />
+                        </Link>
                     </div>
                     <div ref={refResizer} className={styles.resizer}></div>
                 </div>

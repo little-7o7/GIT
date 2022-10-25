@@ -5,6 +5,7 @@
     width: 100%;
     position: relative;
     display: flex;
+    background-color: colors.$dark-blue;
 
     .resizeable {
         position: relative;
@@ -21,32 +22,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-            svg {
-                position: absolute;
-                left: 19px;
-            }
-
-            input {
-                height: 35px;
-                width: 100%;
-                border: none;
-                border-radius: 10px;
-                outline: none;
-                padding: 0 10px 0 40px;
-                background-color: colors.$light-blue;
-            }
         }
 
         .scroll {
             height: 100%;
             width: 100%;
-            overflow: scroll;
+            overflow-y: scroll;
 
             .chats {
                 display: flex;
                 flex-direction: column;
-                height: 1000px;
             }
 
             hr {
@@ -60,10 +45,6 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-
-            .navigationButton {
-                cursor: pointer;
-            }
         }
 
         .resizer {

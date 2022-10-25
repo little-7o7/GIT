@@ -20,13 +20,10 @@ export const navigationPanelSlice = createSlice({
         chats: (state) => {
             state.value = 'chats'
         },
-        profile: (state) => {
-            state.value = 'profile'
-        },
     },
 })
 
-export const { contacts, chats, profile } = navigationPanelSlice.actions
+export const { contacts, chats } = navigationPanelSlice.actions
 
 export const selectCount = (state: RootState) => state.navigationPanel.value
 
