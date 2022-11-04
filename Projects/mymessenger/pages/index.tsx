@@ -6,17 +6,19 @@ import ChatsResizerLayout from '../src/layouts/ChatsResizerLayout/ChatsResizerLa
 import { contacts, chats } from '../app/slices/navigationPanelSlice'
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import Link from 'next/link';
+import { useUserAuth } from "../src/context/UserAuthContext";
 
 const Index: NextPage = () => {
+    const { user } = useUserAuth();
     const router = useRouter();
     const navigationPanelStatus = useAppSelector((state) => state.navigationPanel.value)
     const dispatch = useAppDispatch()
     
     useEffect(() => {
-        if (1 + 1) {
-            // router.push('/login')
+        if (user === null) {
+            router.push('/login')
         }
-    }, [])
+    }, [user])
 
     return (
         <div>

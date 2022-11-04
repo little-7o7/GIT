@@ -4,6 +4,7 @@ import { store } from '../app/store'
 import { Provider } from 'react-redux'
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import { useEffect } from 'react';
+import { UserAuthContextProvider } from "../src/context/UserAuthContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {
@@ -13,9 +14,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ChakraProvider>
             <ColorModeScript initialColorMode={'dark'} />
-            <Provider store={store}>
-                <Component {...pageProps} />
-            </Provider>
+            <UserAuthContextProvider>
+                <Provider store={store}>
+                    <Component {...pageProps} />
+                </Provider>
+            </UserAuthContextProvider>
         </ChakraProvider>
     )
 }
