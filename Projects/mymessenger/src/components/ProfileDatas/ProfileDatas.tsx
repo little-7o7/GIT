@@ -1,13 +1,13 @@
 import styles from './ProfileDatas.module.scss'
-import { useState, useRef } from 'react';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router'
+
 import { useUserAuth } from "../../context/UserAuthContext";
 
 interface IProfileDatas {
-    avatar?: string;
+    photoUrl?: string;
     email: string;
-    login: string;
     name: string;
     lastName: string;
     displayName: string;
@@ -15,25 +15,17 @@ interface IProfileDatas {
 }
 
 const ProfileDatas = (props: IProfileDatas) => {
-    const { logOut, user } = useUserAuth();
+    const { logOut } = useUserAuth();
     const router = useRouter();
 
-    const {
-        avatar,
-        email,
-        login,
-        name,
-        lastName,
-        displayName,
-        phoneNumber,
-    } = props;
+    const { email, name, lastName, displayName, phoneNumber } = props;
 
     const handleLogout = async () => {
         try {
             await logOut();
             router.push('/login')
         } catch (error: any) {
-            console.log(error.message);
+            // console.log(error.message);
         }
     }
 
@@ -43,10 +35,6 @@ const ProfileDatas = (props: IProfileDatas) => {
                 <div className={`${styles.lineData} ${styles.borderedLineData}`}>
                     <span className={styles.opacity}>Email</span>
                     <span>{email}</span>
-                </div>
-                <div className={`${styles.lineData} ${styles.borderedLineData}`}>
-                    <span className={styles.opacity}>Login</span>
-                    <span>{login}</span>
                 </div>
                 <div className={`${styles.lineData} ${styles.borderedLineData}`}>
                     <span className={styles.opacity}>Name</span>

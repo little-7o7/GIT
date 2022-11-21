@@ -1,10 +1,12 @@
 import styles from './LoginForm.module.scss'
-import { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router'
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase";
 import LoginSinginInput from '../LoginSinginInput/LoginSinginInput';
+
+import { useState } from 'react';
+import { useRouter } from 'next/router'
+import Link from 'next/link';
+
+import { auth } from "../../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginForm = () => {
     const [errorStatus, setErrorStatus] = useState(false);
@@ -27,9 +29,9 @@ const LoginForm = () => {
         <div className={styles.container}>
             <h1>Sign In</h1>
             <form onSubmit={handleSubmit}>
-                <LoginSinginInput defaultValue='munisxonovmaxmudxon@gmail.com' type='text' labelText='Email' />
-                <LoginSinginInput defaultValue='Eshonchaoo7' type='password' labelText='Password' />
-                <span className={styles.error} style={errorStatus ? { opacity: 1 } : { opacity: 0 }}>Check Phone number and Password</span>
+                <LoginSinginInput type='text' labelText='Email' />
+                <LoginSinginInput type='password' labelText='Password' />
+                <span className={styles.error} style={errorStatus ? { opacity: 1 } : { opacity: 0 }}>Check Email and Password</span>
                 <button>Sign in</button>
             </form>
             <span className={styles.registerLink}>

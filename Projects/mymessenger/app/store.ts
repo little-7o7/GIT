@@ -1,9 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import navigationPanelReducer from './slices/navigationPanelSlice';
+import userDataReducer from './slices/userDatasSlice';
+import contactsDatasReducer from './slices/contactsDatasSlice';
+import userChatsReducer from "./slices/userChatsSlice";
+import selectedChatReducer from "./slices/selectedChatSlice";
+
 
 export const store = configureStore({
     reducer: {
         navigationPanel: navigationPanelReducer,
+        userDatas: userDataReducer,
+        contactsDatas: contactsDatasReducer,
+        userChats: userChatsReducer,
+        selectedChat: selectedChatReducer
     },
 });
 

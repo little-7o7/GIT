@@ -1,6 +1,7 @@
+import ErrorPage from '../src/pages/ErrorPages/ErrorPages'
+
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import ErrorPage from '../src/pages/ErrorPages/ErrorPages'
 
 const Page404: NextPage = () => {
     return (

@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import styles from './LoginSinginInput.module.scss'
+
+import { useState } from 'react';
 
 interface ILoginSinginInput {
     type: string;

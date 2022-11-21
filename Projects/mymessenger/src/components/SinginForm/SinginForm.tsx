@@ -1,27 +1,57 @@
 import styles from './SinginForm.module.scss'
-import { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router'
-import { useUserAuth } from "../../../src/context/UserAuthContext";
 import LoginSinginInput from '../LoginSinginInput/LoginSinginInput';
-import { getAuth, updateProfile } from "firebase/auth";
+
+import { useState } from 'react';
+import { useRouter } from 'next/router'
+import Link from 'next/link';
+
+import { useUserAuth } from "../../../src/context/UserAuthContext";
+import { auth, db } from '../../../firebase';
+import { doc, setDoc } from "firebase/firestore";
+import { updateProfile } from 'firebase/auth';
+
+import { useAppDispatch } from '../../../app/hooks';
+import { changeDisplayName, changeEmail} from '../../../app/slices/userDatasSlice'
 
 const SinginForm = () => {
-    const { user, signUp, updateProfileData } = useUserAuth();
-    let router = useRouter();
+    const { signUp } = useUserAuth();
     const [errorStatus, setErrorStatus] = useState(false)
+    const dispatch = useAppDispatch();
+    let router = useRouter();
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    const handleSubmit = async (event: any) => {
+        event.preventDefault();
 
-        if (e.target[2].value === e.target[3].value) {
+        if (event.target[2].value === event.target[3].value) {
             setErrorStatus(false)
 
             try {
-                await signUp(e.target[1].value, e.target[2].value);
-                await updateProfileData(e.target[0].value)
+                await signUp(event.target[1].value, event.target[2].value)
+                    .then(() => {
+                        dispatch(changeEmail(event.target[1].value));
+                        updateProfile(auth.currentUser!, {
+                            displayName: event.target[0].value
+                        }).then(() => {
+                            dispatch(changeDisplayName(event.target[0].value))
+                        }).then(() => {
+                            setDoc(doc(db, "users", auth.currentUser!.uid), {
+                                displayName: event.target[0].value,
+                                email: event.target[1].value,
+                                name: '',
+                                lastName: '',
+                                phoneNumber: '',
+                                photoUrl: '',
+                                uid: auth.currentUser!.uid,
+                            });
+                            setDoc(doc(db, "userChats", auth.currentUser!.uid), {});
+                            // alert('datas posted')
+                        }).catch((error) => {
+                            // console.log(error)
+                        });
+                    })
                 await router.push('/')
             } catch (err) {
+                // console.log(err);
                 setErrorStatus(true)
             }
         }
@@ -31,11 +61,11 @@ const SinginForm = () => {
         <div className={styles.container}>
             <h1>Sign up</h1>
             <form onSubmit={handleSubmit}>
-                <LoginSinginInput defaultValue='little_7o7' type='text' labelText='Username' />
-                <LoginSinginInput defaultValue='munisxonovmaxmudxon@gmail.com' type='text' labelText='Email' />
-                <LoginSinginInput defaultValue='lovely_feride' type='password' labelText='Password' />
-                <LoginSinginInput defaultValue='lovely_feride' type='password' labelText='Repeat Password' />
-                <span className={styles.error} style={errorStatus ? { opacity: 1 } : { opacity: 0 }}>Check Phone number and Password</span>
+                <LoginSinginInput type='text' labelText='Display name' />
+                <LoginSinginInput type='text' labelText='Email' />
+                <LoginSinginInput type='password' labelText='Password' />
+                <LoginSinginInput type='password' labelText='Repeat Password' />
+                <span className={styles.error} style={errorStatus ? { opacity: 1 } : { opacity: 0 }}>Check Email and Password</span>
                 <button>Sign up</button>
             </form>
             <span className={styles.registerLink}>

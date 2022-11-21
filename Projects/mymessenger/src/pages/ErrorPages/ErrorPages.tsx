@@ -1,11 +1,10 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
 import styles from './ErrorPages.module.scss'
+
+import Link from 'next/link'
 
 interface IErrorPageProps {
     error: number;
-    title: string; 
+    title: string;
 }
 
 const ErrorPage = (props: IErrorPageProps) => {

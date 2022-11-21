@@ -1,38 +1,46 @@
 import styles from './passwordChanger.module.scss'
 import { Button, Input } from '@chakra-ui/react';
 
-interface IPasswordChanger {
-    avatar?: string;
-    email: string;
-    login: string;
-    name: string;
-    lastName: string;
-    displayName: string;
-    phoneNumber: string;
-}
+import { useRouter } from 'next/router'
+import { useState } from 'react';
 
-const PasswordChanger = (props: IPasswordChanger) => {
-    const {
-        avatar,
-        email,
-        login,
-        name,
-        lastName,
-        displayName,
-        phoneNumber,
-    } = props;
+import { auth } from '../../../firebase';
+import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth';
 
-    const handleSubmit = (event: any) => {
+const PasswordChanger = () => {
+    const router = useRouter();
+    const [error, setError] = useState<string>('');
+
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
-        console.log(event);
+        setError('');
 
+        if (event.target[1].value === event.target[2].value && event.target[0].value.length !== 0 && event.target[1].value.length !== 0) {
+            const credential = EmailAuthProvider.credential(
+                auth.currentUser!.email!,
+                event.target[0].value
+            )
+
+            reauthenticateWithCredential(auth.currentUser!, credential)
+                .then(() => {
+                    const newPassword = event.target[2].value;
+                    updatePassword(auth.currentUser!, newPassword);
+                })
+                .then(() => {
+                    // alert('password changed')
+                    router.push('/profile')
+                })
+                .catch((error) => {
+                    setError(error.message);
+                });
+        }
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <div className={styles.datas}>
                 <div className={`${styles.lineData} ${styles.borderedLineData}`}>
-                    <span className={styles.opacity}>Current password</span>
+                    <span className={styles.opacity}>Old password</span>
                     <Input type='password' height={'35px'} w={300} textAlign='end' />
                 </div>
                 <div className={`${styles.lineData} ${styles.borderedLineData}`}>
@@ -42,6 +50,9 @@ const PasswordChanger = (props: IPasswordChanger) => {
                 <div className={styles.lineData}>
                     <span className={styles.opacity}>Repeat new password</span>
                     <Input type='password' height={'35px'} w={300} textAlign='end' />
+                </div>
+                <div className={styles.error}>
+                    <span style={error.length === 0 ? { opacity: '0' } : { opacity: '1' }}>{error}</span>
                 </div>
                 <div className={styles.links}>
                     <Button type='submit' w={'100%'}>Save</Button>

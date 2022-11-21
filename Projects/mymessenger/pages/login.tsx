@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+
 import LoginSinginLayout from '../src/layouts/LoginSinginLayout/LoginSinginLayout'
 import LoginForm from '../src/components/LoginForm/LoginForm';
 

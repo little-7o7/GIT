@@ -1,10 +1,14 @@
 import '../src/styles/globals.scss'
+
 import type { AppProps } from 'next/app'
-import { store } from '../app/store'
-import { Provider } from 'react-redux'
-import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import { useEffect } from 'react';
+
+import { Provider } from 'react-redux'
+import { store } from '../app/store'
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import { UserAuthContextProvider } from "../src/context/UserAuthContext";
+import UserDatas from '../src/context/UserDatas'
+
 
 function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {
@@ -14,11 +18,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ChakraProvider>
             <ColorModeScript initialColorMode={'dark'} />
-            <UserAuthContextProvider>
-                <Provider store={store}>
-                    <Component {...pageProps} />
-                </Provider>
-            </UserAuthContextProvider>
+            <Provider store={store}>
+                <UserAuthContextProvider>
+                    <UserDatas>
+                        <Component {...pageProps} />
+                    </UserDatas>
+                </UserAuthContextProvider>
+            </Provider>
         </ChakraProvider>
     )
 }

@@ -1,29 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  updateProfile,
-} from "firebase/auth";
+
 import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
-  const [user, setUser] = useState({});
-  
-  // ! loginsStatus loginsStatus loginsStatus
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("Auth", currentuser);
-      setUser(currentuser);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  const [user, setUser] = useState();
 
   // ! logIn logIn logIn logIn 
   function logIn(email, password, displayName) {
@@ -40,19 +23,17 @@ export function UserAuthContextProvider({ children }) {
     return signOut(auth);
   }
 
-  // ! updateProfileData updateProfileData
-  function updateProfileData(displayName, image = null) {
-    return (
-      updateProfile(auth.currentUser, {
-        displayName: displayName,
-        photoURL: image,
-      }).then(() => {
-        console.log('profile updated');
-      }).catch((error) => {
-        console.log(error);
-      }))
-  }
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
+      // console.log("Auth", currentuser);
+      setUser(currentuser);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <userAuthContext.Provider
@@ -61,7 +42,6 @@ export function UserAuthContextProvider({ children }) {
         logIn,
         signUp,
         logOut,
-        updateProfileData,
       }}
     >
       {children}

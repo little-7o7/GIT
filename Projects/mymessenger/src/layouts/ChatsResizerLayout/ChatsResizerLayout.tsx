@@ -1,13 +1,14 @@
 import styles from './ChatsResizerLayout.module.scss'
-import { useRef, useEffect } from 'react';
+import { InputGroup, InputLeftElement, Input, IconButton } from '@chakra-ui/react';
 import { CgSearch } from 'react-icons/cg';
 import { BsPersonSquare, BsPersonCircle } from 'react-icons/bs';
 import { TbMessages } from 'react-icons/tb';
-import { useRouter } from 'next/router';
-import { InputGroup, InputLeftElement, Input, IconButton } from '@chakra-ui/react';
+
+import { useRef, useEffect } from 'react';
+import Link from 'next/link';
+
 import { contacts, chats } from '../../../app/slices/navigationPanelSlice'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import Link from 'next/link';
 
 interface IChatsResizerLayout {
     children: any;
@@ -18,7 +19,6 @@ const ChatsResizerLayout = (props: IChatsResizerLayout) => {
     const navigationPanelStatus = useAppSelector((state) => state.navigationPanel.value)
     const dispatch = useAppDispatch()
 
-    const router = useRouter();
     const ref = useRef(null)
     const refResizer = useRef(null)
 
@@ -49,7 +49,7 @@ const ChatsResizerLayout = (props: IChatsResizerLayout) => {
         }
 
         const resizerRight = refResizer.current;
-        resizerRight.addEventListener('mousedown', onMouseDownRightResize);
+        refResizer.current.addEventListener('mousedown', onMouseDownRightResize);
 
         return () => {
             resizerRight.removeEventListener('mousedown', onMouseDownRightResize);
@@ -68,6 +68,13 @@ const ChatsResizerLayout = (props: IChatsResizerLayout) => {
         }
     }
 
+    const onkeypressed = (e) => {
+        const code = e.charCode || e.keyCode;
+        if (code == 27) {
+            e.target.value = '';
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.box}>
@@ -77,7 +84,7 @@ const ChatsResizerLayout = (props: IChatsResizerLayout) => {
                             <InputLeftElement pointerEvents='none'>
                                 <CgSearch size={'20px'} color='' />
                             </InputLeftElement>
-                            <Input type='tel' placeholder='Search' />
+                            <Input type='tel' placeholder='Search' onKeyDown={onkeypressed} />
                         </InputGroup>
                     </div>
                     <div className={styles.scroll}>
