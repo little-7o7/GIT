@@ -1,0 +1,19 @@
+{
+  "name": "route-rating-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch db.json --port 3333 --middlewares ./range.js",
+    "client": "npm run dev --prefix client",
+    "admin": "npm run dev --prefix admin",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run admin\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "content-range": "^2.0.2",
+    "json-server": "^0.17.1"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "fire"
+    },
+    {
+      "id": 2,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "water"
+    },
+    {
+      "id": 3,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "wind"
+    },
+    {
+      "id": 4,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "earth"
+    }
+  ],
+  "filters": [
+    {
+      "value": "all",
+      "inRus": "Все"
+    },
+    {
+      "value": "fire",
+      "inRus": "Огонь"
+    },
+    {
+      "value": "water",
+      "inRus": "Вода"
+    },
+    {
+      "value": "wind",
+      "inRus": "Ветер"
+    },
+    {
+      "value": "earth",
+      "inRus": "Земля"
+    }
+  ]
+}

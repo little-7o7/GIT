@@ -1,0 +1,154 @@
+{
+  "admins": [
+    {
+      "id": "little_7o7",
+      "password": "Eshonchaoo7",
+      "name": "Muniskhonov Makhmudkhon Madikhonovich",
+      "email": "munisxonovmaxmudxon@gmail.com",
+      "role": [
+        "developer",
+        "accountant"
+      ],
+      "phone": "+998330737477"
+    },
+    {
+      "id": "madijon0073",
+      "password": "Eshonbo737477",
+      "name": "Amonov Madi Muniskhonovich",
+      "email": "madijon0073@gmail.com",
+      "role": [
+        "director",
+        "salesman"
+      ],
+      "phone": "+998337737477 +993915580073 +998985737477"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "76708b7c-f837-40cf-a59f-1df83b09d963",
+      "total": [
+        {
+          "id": "9684f1d0-2a95-496a-8dfb-a3d8b46fe36e",
+          "currency": "USD",
+          "total": "1000",
+          "default": false
+        },
+        {
+          "id": "8a58febd-33ae-476e-a7a9-446c9b192554",
+          "currency": "UZS",
+          "total": "1234",
+          "default": true
+        }
+      ],
+      "name": "Shuxrat Tosh",
+      "phone": "+998330737477 +998331737477"
+    },
+    {
+      "id": "65ed535d-b2f5-415b-93f4-0760849b92be",
+      "total": [
+        {
+          "id": "9e94ad91-886d-4437-820f-2bd113edac10",
+          "currency": "USD",
+          "total": "1923",
+          "default": true
+        },
+        {
+          "id": "728ff24a-d222-4a7b-8b4a-8a13417cea38",
+          "currency": "UZS",
+          "total": "9389",
+          "default": false
+        }
+      ],
+      "name": "little_7o7",
+      "phone": "+998330737477 +998331737477"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "name": "Xosiyat xola",
+      "phone": [
+        "+998337737477",
+        "+993915580073",
+        "+998985737477"
+      ],
+      "total": [
+        {
+          "id": 1,
+          "currency": "UZS",
+          "total": 100
+        }
+      ]
+    }
+  ],
+  "workers": [
+    {
+      "id": 1,
+      "name": "Fariz",
+      "phone": [
+        "+998994132797"
+      ],
+      "total_uzs": 100
+    }
+  ],
+  "works": [
+    {
+      "id": 1,
+      "articul": 100,
+      "name": "Shabnam Setka A",
+      "wholesalePrice": 600000,
+      "retailPrice": 800000,
+      "expended": [
+        {
+          "id": 1,
+          "name": "Metraj 10",
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "name": "Skoch 32",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "warehouses": {
+    "Havli": [
+      {
+        "id": 1,
+        "name": "Metraj 10",
+        "quantity": 100
+      }
+    ],
+    "Uchastka": [
+      {
+        "id": 2,
+        "name": "Skoch 32",
+        "quantity": 100
+      }
+    ],
+    "Urgut": [
+      {
+        "id": 3,
+        "name": "Skoch 24",
+        "quantity": 100
+      }
+    ]
+  },
+  "rawMaterialsAndWorkPrices": [
+    {
+      "id": 1,
+      "name": "Metraj",
+      "price": 100
+    },
+    {
+      "id": 2,
+      "name": "Skoch 32",
+      "price": 100
+    }
+  ],
+  "shops": {
+    "2Sector64_65Shop": {},
+    "NewShop": {}
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "originUrl": "https://t.me//little_7o7",
+      "date": "2022-12-22T13:06:20.708Z",
+      "endDate": "2022-12-31",
+      "userId": 1,
+      "count": 4,
+      "id": 1
+    }
+  ],
+  "clients": [
+    {
+      "name": "little_7o7",
+      "email": "munisxonovmaxmudxon@gmail.com",
+      "phone": "+998330737477",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "s3f43g",
+      "name": "little_7o7",
+      "email": "munisxonovmaxmudxon@gmail.com",
+      "password": "Eshonchaoo7",
+      "phone": "+998330737477",
+      "role": "developer"
+    }
+  ]
+}
