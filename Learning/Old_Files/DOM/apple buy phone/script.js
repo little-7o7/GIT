@@ -8,6 +8,7 @@ let price_changer = document.querySelector('.price_changer')
 let inner13Pro = 'From $999 or $41.62/mo for 24 mo.*'
 let inner13ProMax = 'From $1099 or $45.79/mo for 24 mo.*'
 
+
 button_13pro.onclick = () => {
     image_div.style.backgroundImage = 'url(./images/13pro/iphone-13-pro-family-select.jpg)'
     price_changer.innerHTML = inner13Pro
