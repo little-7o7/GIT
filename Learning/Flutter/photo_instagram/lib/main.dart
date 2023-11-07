@@ -17,14 +17,14 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Traver app',
+          title: 'photo',
           theme: ThemeData(
             useMaterial3: true,
           ),
           home: child,
         );
       },
-      child: const Text('1234'),
+      child: const Text('little'),
     );
   }
 }
