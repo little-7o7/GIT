@@ -1,46 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:photo_instagram/screens/first_screen.dart';
-import 'package:photo_instagram/screens/second_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: CustomScreenTransition(),
-    );
-  }
-}
-
-class CustomScreenTransition extends StatefulWidget {
-  @override
-  _CustomScreenTransitionState createState() => _CustomScreenTransitionState();
-}
-
-class _CustomScreenTransitionState extends State<CustomScreenTransition> {
-  bool showScreen1 = true;
-
-  void toggleScreen() {
-    setState(() {
-      showScreen1 = !showScreen1;
-    });
-  }
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Custom Screen Transition'),
-      ),
-      body: AnimatedSwitcher(
-        duration: Duration(milliseconds: 500),
-        child: showScreen1 ? FirstScreen(toggleScreen) : SecondScreen(toggleScreen),
-        switchInCurve: Curves.easeIn,
-        switchOutCurve: Curves.easeOut,
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Traver app',
+          theme: ThemeData(
+            useMaterial3: true,
+          ),
+          home: child,
+        );
+      },
+      child: const Text('1234'),
     );
   }
 }
